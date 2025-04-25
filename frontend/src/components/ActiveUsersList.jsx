@@ -9,7 +9,7 @@ const ActiveUsersList = ({ loggedInUser }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/users");
+        const res = await axios.get("http://localhost:8080/users");//tfg
         setUsers(res.data);
       } catch (error) {
         console.error('Error fetching users:', error);

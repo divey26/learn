@@ -15,7 +15,7 @@ export const SharedPostlist = ({
   post,
   user,//user
   reFetchSharedPost,
-  setReFetchSharedPost,
+  setReFetchSharedPost,//hvfj
 }) => {
   console.log(post, user, reFetchSharedPost, setReFetchSharedPost);
   //   const [showModal, setShowModal] = useState(false);

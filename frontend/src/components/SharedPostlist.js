@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 
 export const SharedPostlist = ({
   post,
-  user,
+  user,//user
   reFetchSharedPost,
   setReFetchSharedPost,
 }) => {

@@ -90,7 +90,7 @@ const Profile = () => {
           <section>
             <img
               className="w-full h-64 object-cover"
-              src="https://hometriangle.com/blogs/content/images/2022/02/Home-Gym-for-Small-Spaces-1.png"
+              src=""
               alt=""
             />
           </section>

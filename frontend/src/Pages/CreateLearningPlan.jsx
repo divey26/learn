@@ -63,7 +63,15 @@ const CreateLearningPlan = () => {
       return toast.error("Please fill all the fields");
     }
 
-    
+    const planData = {
+      userId: user.id,
+      learningPlanName,
+      subjects: selectedSubject,
+      hoursPerDay,
+      schedule,
+      date,
+      description,
+    };
 
     try {
       const res = editLearningPlans

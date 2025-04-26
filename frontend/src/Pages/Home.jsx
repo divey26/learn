@@ -1,14 +1,13 @@
-// Import Statements at the Top
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-// Lazy load components (all imports should be at the top)
-const Layout = React.lazy(() => import("../components/Layout"));
-const PostsList = React.lazy(() => import("../components/PostsList"));
-const SharedPostlist = React.lazy(() => import("../components/SharedPostlist"));
-const LearningStatus = React.lazy(() => import("./LearningStatus"));
-const LearningPlan = React.lazy(() => import("./LearningPlan"));
+// Components
+import Layout from "../components/Layout";
+import PostsList from "../components/PostsList";
+import { SharedPostlist } from "../components/SharedPostlist";
+import LearningStatus from "./LearningStatus";
+import LearningPlan from "./LearningPlan";
 
 // UI Elements
 import { TETabs, TETabsItem } from "tw-elements-react";
@@ -84,8 +83,9 @@ const Home = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Layout>
+    <Layout>
+      <>
+        {/* Tabs Navigation */}
         <div className="mb-3">
           <TETabs fill>
             <TETabsItem
@@ -154,8 +154,8 @@ const Home = () => {
             <LearningPlan user={user} />
           </div>
         )}
-      </Layout>
-    </Suspense>
+      </>
+    </Layout>
   );
 };
 

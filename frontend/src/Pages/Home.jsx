@@ -128,15 +128,7 @@ const Home = () => {
             })}
             {sharedPosts?.map((sharePost, index) => {
               return (
-                <SharedPostlist
-                  post={sharePost}
-                  user={user}
-                  // key={index}
-                  // onUpdatePost={updatePost}
-                  // onDeletePost={deletePost}
-                  reFetchSharedPost={reFetchSharedPost}
-                  setReFetchSharedPost={setReFetchSharedPost}
-                />
+                
               );
             })}
           </div>

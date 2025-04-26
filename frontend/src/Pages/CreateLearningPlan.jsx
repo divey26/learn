@@ -138,7 +138,13 @@ const CreateLearningPlan = () => {
               <label className="block text-sm font-medium text-gray-700">
                 Learning Plan Name
               </label>
-              
+              <input
+                  type="text"
+                  value={learningPlanName}
+                  onChange={(e) => setLearningPlanName(e.target.value)}
+                  placeholder="Enter learning plan name"
+                  className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
+              />
             </div>
 
             <div className="mb-4">

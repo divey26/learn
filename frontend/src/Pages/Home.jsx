@@ -1,8 +1,9 @@
+// Import Statements at the Top
 import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-// Lazy load components (must be at the top of the file)
+// Lazy load components (all imports should be at the top)
 const Layout = React.lazy(() => import("../components/Layout"));
 const PostsList = React.lazy(() => import("../components/PostsList"));
 const SharedPostlist = React.lazy(() => import("../components/SharedPostlist"));

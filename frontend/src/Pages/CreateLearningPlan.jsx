@@ -186,9 +186,7 @@ const CreateLearningPlan = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700">
-                Description of your learning
-              </label>
+              
               <textarea
                   rows="4"
                   value={description}

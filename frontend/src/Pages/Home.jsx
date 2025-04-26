@@ -1,79 +1,37 @@
-// Import necessary dependencies and components
 import React, { useEffect, useState } from "react";
-import Layout from "../components/Layout";
-import { TETabs, TETabsItem } from "tw-elements-react";
-import PostsList from "../components/PostsList";
 import axios from "axios";
 import toast from "react-hot-toast";
+
+// Components
+import Layout from "../components/Layout";
+import PostsList from "../components/PostsList";
+import { SharedPostlist } from "../components/SharedPostlist";
 import LearningStatus from "./LearningStatus";
 import LearningPlan from "./LearningPlan";
 
-import { useActiveTab } from "../context/ActiveTabContext";
-import { SharedPostlist } from "../components/SharedPostlist";
+// UI Elements
+import { TETabs, TETabsItem } from "tw-elements-react";
 
-// Define the Home functional component
+// Context
+import { useActiveTab } from "../context/ActiveTabContext";
+
 const Home = () => {
-  // Get the currently active tab and function to change it from context
+  // Context
   const { activeTab, setActiveTab } = useActiveTab();
 
-  // State to store user information
+  // States
   const [user, setUser] = useState(null);
-
-  // States to control re-fetching posts and shared posts
+  const [posts, setPosts] = useState([]);
+  const [sharedPosts, setSharedPosts] = useState([]);
   const [reFetchPost, setReFetchPost] = useState(false);
   const [reFetchSharedPost, setReFetchSharedPost] = useState(false);
 
-  // State to store normal posts and shared posts
-  const [posts, setPosts] = useState([]);
-  const [sharedPosts, setSharedPosts] = useState([]);
-
-  // Fetch all posts on component mount
+  // Fetch all posts on mount and when reFetchPost changes
   useEffect(() => {
     const fetchAllPosts = async () => {
       try {
         const { data } = await axios.get("http://localhost:8080/posts");
-        setPosts(data); // Store posts in state
-      } catch (error) {
-        toast.error("Server error"); // Show error toast on failure
-      }
-    };
-    fetchAllPosts();
-  }, []);
-
-  // Fetch user data from local storage with a simulated delay
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
-        const userData = localStorage.getItem("user");
-        setUser(JSON.parse(userData)); // Parse and set user data
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Function to update a post in the state
-  const updatePost = (updatedPost) => {
-    setPosts((prevPosts) =>
-      prevPosts.map((post) => (post.id === updatedPost.id ? updatedPost : post))
-    );
-  };
-
-  // Function to delete a post from the state
-  const deletePost = (deletedPost) => {
-    setPosts((prevPosts) =>
-      prevPosts.filter((post) => post.id !== deletedPost.id)
-    );
-  };
-
-  // Re-fetch posts whenever reFetchPost state changes
-  useEffect(() => {
-    const fetchAllPosts = async () => {
-      try {
-        const { data } = await axios.get("http://localhost:8080/posts");
-        setPosts(data); // Update state with latest posts
+        setPosts(data);
       } catch (error) {
         toast.error("Server error");
       }
@@ -81,12 +39,12 @@ const Home = () => {
     fetchAllPosts();
   }, [reFetchPost]);
 
-  // Re-fetch shared posts whenever reFetchSharedPost state changes
+  // Fetch shared posts when reFetchSharedPost changes
   useEffect(() => {
     const fetchAllSharedPosts = async () => {
       try {
         const { data } = await axios.get("http://localhost:8080/share");
-        setSharedPosts(data); // Update state with latest shared posts
+        setSharedPosts(data);
       } catch (error) {
         toast.error("Server error");
       }
@@ -94,11 +52,41 @@ const Home = () => {
     fetchAllSharedPosts();
   }, [reFetchSharedPost]);
 
+  // Get user info from localStorage
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const userData = localStorage.getItem("user");
+        setUser(JSON.parse(userData));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchUser();
+  }, []);
+
+  // Update post in state
+  const updatePost = (updatedPost) => {
+    setPosts((prevPosts) =>
+      prevPosts.map((post) =>
+        post.id === updatedPost.id ? updatedPost : post
+      )
+    );
+  };
+
+  // Remove post from state
+  const deletePost = (deletedPost) => {
+    setPosts((prevPosts) =>
+      prevPosts.filter((post) => post.id !== deletedPost.id)
+    );
+  };
+
   return (
     <Layout>
       <>
-        {/* Tabs for switching views */}
-        <div className="mb-3 ">
+        {/* Tabs Navigation */}
+        <div className="mb-3">
           <TETabs fill>
             <TETabsItem
               onClick={() => setActiveTab("tab1")}
@@ -124,53 +112,45 @@ const Home = () => {
           </TETabs>
         </div>
 
-        {/* Tab 1: Daily Posts */}
+        {/* Daily Post Tab */}
         {activeTab === "tab1" && (
           <div>
-            {/* Render user-created posts */}
-            {posts?.map((post, index) => {
-              return (
-                <PostsList
-                  post={post}
-                  user={user}
-                  key={index}
-                  onUpdatePost={updatePost}
-                  onDeletePost={deletePost}
-                  reFetchPost={reFetchPost}
-                  setReFetchPost={setReFetchPost}
-                  setReFetchSharedPost={setReFetchSharedPost}
-                  reFetchSharedPost={reFetchSharedPost}
-                />
-              );
-            })}
+            {posts?.map((post, index) => (
+              <PostsList
+                key={index}
+                post={post}
+                user={user}
+                onUpdatePost={updatePost}
+                onDeletePost={deletePost}
+                reFetchPost={reFetchPost}
+                setReFetchPost={setReFetchPost}
+                setReFetchSharedPost={setReFetchSharedPost}
+                reFetchSharedPost={reFetchSharedPost}
+              />
+            ))}
 
-            {/* Render shared posts */}
-            {sharedPosts?.map((sharePost, index) => {
-              return (
-                <SharedPostlist
-                  post={sharePost}
-                  user={user}
-                  key={index}
-                  reFetchSharedPost={reFetchSharedPost}
-                  setReFetchSharedPost={setReFetchSharedPost}
-                />
-              );
-            })}
+            {sharedPosts?.map((sharePost, index) => (
+              <SharedPostlist
+                key={index}
+                post={sharePost}
+                user={user}
+                reFetchSharedPost={reFetchSharedPost}
+                setReFetchSharedPost={setReFetchSharedPost}
+              />
+            ))}
           </div>
         )}
 
-        {/* Tab 2: Learning Status */}
+        {/* Learning Status Tab */}
         {activeTab === "tab2" && (
           <div>
-            {/* Render the user's learning status */}
             <LearningStatus user={user} />
           </div>
         )}
 
-        {/* Tab 3: Learning Plan */}
+        {/* Learning Plan Tab */}
         {activeTab === "tab3" && (
           <div>
-            {/* Render the user's learning plan */}
             <LearningPlan user={user} />
           </div>
         )}

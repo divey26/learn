@@ -135,6 +135,7 @@ const Home = () => {
                 post={sharePost}
                 user={user}
                 reFetchSharedPost={reFetchSharedPost}
+                
                 setReFetchSharedPost={setReFetchSharedPost}
               />
             ))}

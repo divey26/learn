@@ -160,7 +160,21 @@ const Home = () => {
           </div>
         )}
 
-        
+        {/* <div>
+          {posts?.map((post, index) => {
+            return (
+              <PostsList
+                post={post}
+                user={user}
+                key={index}
+                onUpdatePost={updatePost}
+                onDeletePost={deletePost}
+                reFetchPost={reFetchPost}
+                setReFetchPost={setReFetchPost}
+              />
+            );
+          })}
+        </div> */}
       </>
     </Layout>
   );

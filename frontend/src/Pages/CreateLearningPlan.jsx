@@ -174,15 +174,7 @@ const CreateLearningPlan = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Select Date
-              </label>
-              <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-              />
+              
             </div>
 
             <div className="mb-6">

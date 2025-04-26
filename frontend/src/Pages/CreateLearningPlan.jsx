@@ -161,9 +161,7 @@ const CreateLearningPlan = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">
-                Schedule
-              </label>
+              
               <input
                   type="text"
                   value={schedule}

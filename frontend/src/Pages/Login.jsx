@@ -59,8 +59,8 @@ export default function Login() {
       }}
     >
       <div className="w-full max-w-md">
-        <div className="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-8">
+      <div className="bg-white backdrop-blur-lg rounded-2xl shadow-xl p-8" style={{ width: '500px' }}>
+      <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
             <p className="text-gray-600">Sign in to continue to Learn Star</p>
           </div>

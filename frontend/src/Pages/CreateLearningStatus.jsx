@@ -21,6 +21,7 @@ const CreateLearningStatus = () => {
   const { statusId } = useParams();
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     const fetchSinglePost = async () => {
       try {
@@ -76,6 +77,7 @@ const CreateLearningStatus = () => {
       resourcesUsed,
       date,
     };
+    //error handling
 
     try {
       let res;

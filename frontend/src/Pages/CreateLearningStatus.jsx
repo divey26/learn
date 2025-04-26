@@ -50,10 +50,6 @@ const CreateLearningStatus = () => {
     setUser(user);
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!user) return;
-
     if (
         !topicLearned ||
         !hoursSpent ||

@@ -109,6 +109,10 @@ const PostsList = ({
     }
   };
 
+  const handleEditComment = (comment, postId) => {
+    setComment(comment.content);
+    setEditComment(true);
+  };
 
   const handleShare = async (e) => {
     e.preventDefault();

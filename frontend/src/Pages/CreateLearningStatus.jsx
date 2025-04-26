@@ -44,7 +44,7 @@ const CreateLearningStatus = () => {
     if (statusId) {
       fetchSinglePost();
     }
-  }, [statusId]);
+
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));

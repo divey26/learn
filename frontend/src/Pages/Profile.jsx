@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import PostsList from "../components/PostsList";
+import bannerimg from "../images/new/prohead.jpg";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -90,7 +91,7 @@ const Profile = () => {
           <section>
             <img
               className="w-full h-64 object-cover"
-              src=""
+              src={bannerimg}
               alt=""
             />
           </section>

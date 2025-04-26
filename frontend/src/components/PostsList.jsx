@@ -45,16 +45,6 @@ const PostsList = ({
     navigate(`/post/${post.id}`);
   };
 
-  const deletePost = async (post) => {
-    try {
-      await axios.delete(`http://localhost:8080/posts/${post.id}`);
-      setReFetchPost(!reFetchPost);
-      toast.success("Post deleted successfully");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const commentAdd = async (e) => {
     e.preventDefault();
     if (!comment) return toast.error("Comment is required");

@@ -56,7 +56,17 @@ const Home = () => {
     );
   };
 
-
+  useEffect(() => {
+    const fetchAllPosts = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:8080/posts");
+        setPosts(data);
+      } catch (error) {
+        toast.error("Server error");
+      }
+    };
+    fetchAllPosts();
+  }, [reFetchPost]);
 
   useEffect(() => {
     const fetchAllSharedPosts = async () => {

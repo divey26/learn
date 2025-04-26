@@ -2,7 +2,7 @@ import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-// Lazy load components
+// Lazy load components (must be at the top of the file)
 const Layout = React.lazy(() => import("../components/Layout"));
 const PostsList = React.lazy(() => import("../components/PostsList"));
 const SharedPostlist = React.lazy(() => import("../components/SharedPostlist"));

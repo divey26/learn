@@ -23,10 +23,7 @@ const PostsList = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [comment, setComment] = useState(null);
-  const [editComment, setEditComment] = useState(false);
-  const [commentId, setCommentId] = useState(null);
-  const [shareModal, setShareModal] = useState(false);
-  const [shareDescription, setShareDescription] = useState("");
+
 
   const navigate = useNavigate();
   const likeBtnClick = async (post) => {

@@ -142,6 +142,8 @@ const Profile = () => {
             <span className="text-gray-500"> 's Posts</span>
           </p> */}
           {posts?.map((post, index) => {
+
+            
             return (
               <PostsList
                 post={post}

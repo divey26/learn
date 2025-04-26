@@ -322,12 +322,13 @@ const Post = () => {
       >
 
       
-        <h1 className="text-3xl text-white font-bold mb-6 text-center">
-          {editPost ? "Edit Post" : "Add Post"}
-        </h1>
+
 
         <div className="max-w-xl ml-0 p-6 rounded-lg shadow-md bg-transparent"
           style={{ marginLeft:"150px",marginTop:"150px" ,backgroundColor: "rgba(243, 243, 243)" }}>
+               <h1 className="text-3xl text-Black font-bold mb-6 text-center">
+          {editPost ? "Edit Post" : "Add Post"}
+        </h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-full max-w-lg space-y-6 -z-0"

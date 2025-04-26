@@ -113,9 +113,7 @@ const CreateLearningPlan = () => {
               className="max-w mx-auto my-6 bg-white p-12 rounded-lg shadow-md"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }}
           >
-            <h1 className="mb-4 text-3xl font-semibold text-center text-indigo-600">
-              {editLearningPlans ? "Edit Learning Plan" : "Create Learning Plan"}
-            </h1>
+           
 
             <div className="mb-4">
               <label className="block mb-2 text-sm font-medium text-gray-700">

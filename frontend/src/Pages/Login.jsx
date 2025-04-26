@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import backgroundImg from "../images/bck1.jpg";
+import backgroundImg from "../images/new/login.jpg";
 
 const formSchema = yup.object().shape({
   email: yup.string().email().required(),

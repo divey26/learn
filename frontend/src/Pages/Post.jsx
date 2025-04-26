@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
-import backgroundImg from "../images/PostBac.jpg";
+import backgroundImg from "../images/new/createp.jpg";
 
 const storage = getStorage(app);
 
@@ -312,22 +312,22 @@ const Post = () => {
   return (
     <Layout>
       <div
-      className="container mx-auto p-4 min-h-screen"
-      style={{
-        backgroundImage: `url(${backgroundImg})`,
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundAttachment: "fit",
-      }}
-    >
+        className="container mx-auto p-4 h-[900px]"
+        style={{
+          backgroundImage: `url(${backgroundImg})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+
       
         <h1 className="text-3xl text-white font-bold mb-6 text-center">
           {editPost ? "Edit Post" : "Add Post"}
         </h1>
 
-        <div           className="max-w-xl mx-auto p-6 rounded-lg shadow-md bg-transparent"
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
+        <div className="max-w-xl ml-0 p-6 rounded-lg shadow-md bg-transparent"
+          style={{ marginLeft:"150px",marginTop:"150px" ,backgroundColor: "rgba(243, 243, 243)" }}>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-full max-w-lg space-y-6 -z-0"

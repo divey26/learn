@@ -45,7 +45,11 @@ const CreateLearningStatus = () => {
     }
   }, [statusId]);
 
- 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    setUser(user);
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) return;

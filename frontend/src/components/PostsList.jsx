@@ -145,7 +145,9 @@ const PostsList = ({
               />
               <div className="flex flex-col">
                 <b className="mb-2 capitalize">{post?.username}</b>
-               
+                <time datetime="06-08-21" className="text-gray-400 text-xs">
+                  <TimeAgo date={post?.date} />
+                </time>
               </div>
             </div>
             <div className="bg-gray-100	rounded-full h-3.5 flex	items-center justify-center gap-3">

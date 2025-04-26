@@ -40,7 +40,9 @@ const LearningStatus = ({ user }) => {
     }
   };
 
-  
+  const navigateEditPage = (status) => {
+    navigate(`/CreateLearningStatus/${status.updateId}`);
+  };
 
   return (
     <div

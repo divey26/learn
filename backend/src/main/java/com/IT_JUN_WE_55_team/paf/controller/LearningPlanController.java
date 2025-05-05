@@ -37,7 +37,11 @@ public class LearningPlanController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-   
+    @PostMapping
+    public ResponseEntity<LearningPlan> createLearningPlan(@RequestBody LearningPlan learningPlan) {
+        LearningPlan savedLearningPlan = learningPlanService.createLearningPlan(learningPlan);
+        return new ResponseEntity<>(savedLearningPlan, HttpStatus.CREATED);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<LearningPlan> updateLearning(@PathVariable String id,

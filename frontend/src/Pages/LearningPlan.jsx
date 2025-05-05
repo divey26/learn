@@ -29,7 +29,7 @@ const LearningPlan = ({ user }) => {
       setLearningPlans((prevPlans) =>
           prevPlans.filter((p) => p.learningPlanId !== plan.learningPlanId)
       );
-      
+      toast.success("Learning plan deleted successfully");
     } catch (error) {
       toast.error("Failed to delete learning plan");
     }

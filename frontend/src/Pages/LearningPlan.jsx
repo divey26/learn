@@ -23,17 +23,7 @@ const LearningPlan = ({ user }) => {
     fetchLearningPlans();
   }, []);
 
-  const deleteLearningPlan = async (plan) => {
-    try {
-      await axios.delete(`http://localhost:8080/learningPlans/${plan.learningPlanId}`);
-      setLearningPlans((prevPlans) =>
-          prevPlans.filter((p) => p.learningPlanId !== plan.learningPlanId)
-      );
-      toast.success("Learning plan deleted successfully");
-    } catch (error) {
-      toast.error("Failed to delete learning plan");
-    }
-  };
+  
 
   const navigateEditPage = (plan) => {
     navigate(`/CreateLearningPlan/${plan.learningPlanId}`);

@@ -80,12 +80,7 @@ const LearningPlan = ({ user }) => {
                           >
                             <AiFillDelete size={20} />
                           </button>
-                          <button
-                              onClick={() => navigateEditPage(plan)}
-                              className="text-blue-500 hover:text-blue-700 transition-colors"
-                          >
-                            <AiFillEdit size={20} />
-                          </button>
+                          
                         </>
                     )}
                   </div>

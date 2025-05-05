@@ -25,10 +25,7 @@ public class LearningPlanController {
     @Autowired
     private LearningPlanService learningPlanService;
 
-    @GetMapping
-    public List<LearningPlan> getAllLearningPlans() {
-        return learningPlanService.getAllLearningPlans();
-    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<LearningPlan> getLearningPlanById(@PathVariable String id) {

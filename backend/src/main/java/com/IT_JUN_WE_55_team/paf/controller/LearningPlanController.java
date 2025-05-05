@@ -54,9 +54,5 @@ public class LearningPlanController {
         }
     }
 
-    @DeleteMapping("/{learningPlanId}")
-    public ResponseEntity<Void> deleteLearningPlan(@PathVariable String learningPlanId) {
-        learningPlanService.deleteLearningPlan(learningPlanId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    
 }

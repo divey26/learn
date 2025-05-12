@@ -122,16 +122,16 @@ const CreateLearningStatus = () => {
         className="min-h-screen p-4 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImg})` }}
       >
-        <h1 className="mb-4 text-3xl font-semibold text-center text-white">
-          {editStatus ? 'Edit Learning Progress' : 'Create Learning Progress'}
-        </h1>
+
         <form
           onSubmit={handleSubmit}
-          className="max-w-xl mx-auto p-6 rounded-lg shadow-md bg-transparent"
-          style={{ backgroundColor: 'rgba(255, 255, 255, 0.65)' }}
+          className="max-w-xl mx-auto p-6 rounded-lg shadow-md bg-white/75 dark:bg-gray-800/75 backdrop-blur-sm border border-transparent dark:border-white/20"
         >
+          <h1 className="mb-4 text-3xl font-semibold text-center text-indigo-600 dark:text-indigo-400">
+          {editStatus ? 'Edit Learning Progress' : 'Create Learning Progress'}
+        </h1>
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Topic Learned
             </label>
             <input
@@ -139,12 +139,12 @@ const CreateLearningStatus = () => {
               value={topicLearned}
               onChange={(e) => setTopicLearned(e.target.value)}
               placeholder="Enter topic"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Hours Spent
             </label>
             <input
@@ -152,12 +152,12 @@ const CreateLearningStatus = () => {
               value={hoursSpent}
               onChange={(e) => setHoursSpent(e.target.value)}
               placeholder="Enter hours spent"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Concepts Covered
             </label>
             <textarea
@@ -165,12 +165,12 @@ const CreateLearningStatus = () => {
               onChange={(e) => setConceptsCovered(e.target.value)}
               placeholder="E.g. React hooks, Spring Boot REST API..."
               rows="2"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Key Learnings
             </label>
             <textarea
@@ -178,12 +178,12 @@ const CreateLearningStatus = () => {
               onChange={(e) => setKeyLearnings(e.target.value)}
               placeholder="What did you learn today?"
               rows="2"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Challenges Faced
             </label>
             <textarea
@@ -191,12 +191,12 @@ const CreateLearningStatus = () => {
               onChange={(e) => setChallengesFaced(e.target.value)}
               placeholder="Mention any difficulties you faced"
               rows="2"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-sl font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Resources Used
             </label>
             <textarea
@@ -204,31 +204,31 @@ const CreateLearningStatus = () => {
               onChange={(e) => setResourcesUsed(e.target.value)}
               placeholder="List tutorials, books, etc."
               rows="2"
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
               Select Date
             </label>
             <input
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium text-white bg-success rounded-md shadow hover:bg-success-700 focus:outline-none"
+            className="w-full px-4 py-2 text-sm font-medium text-white bg-purple-600 dark:bg-purple-500 rounded-md shadow hover:bg-purple-700 dark:hover:bg-purple-600 focus:outline-none transition-colors"
           >
             {editStatus ? 'Update Progress' : 'Create Progress'}
           </button>
           <button
             onClick={goToLearningStatus}
-            className="w-full px-4 mt-2 py-2 text-sm font-medium text-black bg-transparent rounded-md shadow hover:bg-red-700 hover:text-white focus:outline-none"
+            className="w-full px-4 mt-2 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-md shadow hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none transition-colors"
           >
             Cancel
           </button>

@@ -106,7 +106,7 @@ const LearningPlan = ({ user }) => {
                       <p className="text-lg font-semibold">{plan.learningPlanName}</p>
                     </div>
                     <div className="bg-blue-50 dark:bg-gray-900 p-3 rounded-lg">
-                      <p className="text-sm text-gray-600 dark:text-gray-300">Subjects</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">subjects</p>
                       <p className="text-lg font-semibold">{plan.subjects}</p>
                     </div>
                   </div>

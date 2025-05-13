@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useNavigate, useParams } from "react-router-dom";
-import backgroundImg from "../images/workoutBck.jpg";
+import backgroundImg from "../images/Learning plan.jpg";
 import { useActiveTab } from "../context/ActiveTabContext";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -34,7 +34,7 @@ const CreateLearningPlan = () => {
         const { data } = await axios.get(
             `http://localhost:8080/learningPlans/${LearningPlanId}`
         );
-        setSelectedSubject(data.subjects);
+        setSelectedSubject(data.subject);
         setLearningPlanName(data.learningPlanName);
         setHoursPerDay(data.hoursPerDay);
         setSchedule(data.schedule);
@@ -58,29 +58,33 @@ const CreateLearningPlan = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!user) return;
-
+  
     if (!selectedSubject || !learningPlanName || !hoursPerDay || !schedule || !description) {
       return toast.error("Please fill all the fields");
     }
-
+  
     const planData = {
       userId: user.id,
       learningPlanName,
-      subjects: selectedSubject,
+      subject: selectedSubject,
       hoursPerDay,
       schedule,
       date,
       description,
     };
-
+  
     try {
+
       const res = LearningPlanId
         ? await axios.put(`http://localhost:8080/learningPlans/${LearningPlanId}`, planData)
+
         : await axios.post(`http://localhost:8080/learningPlans`, planData);
   
       if (res.status === 200 || res.status === 201) {
         toast.success(
+
           LearningPlanId
+
             ? "Learning Plan Updated Successfully"
             : "Learning Plan Created Successfully"
         );
@@ -97,6 +101,7 @@ const CreateLearningPlan = () => {
       toast.error("Failed to save learning plan");
     }
   };
+  
 
   const goToLearningPlans = () => {
     navigate("/");
@@ -104,9 +109,11 @@ const CreateLearningPlan = () => {
 
   return (
       <Layout>
+
       <div
         className="min-h-screen p-4 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImg})` }}
+
       >
 
           <form

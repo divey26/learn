@@ -2,7 +2,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import TimeAgo from "./TimeAgo";
 import axios from "axios";
 import toast from "react-hot-toast";
-// import { FaHeart, FaShareFromSquare } from "react-icons/fa6";
+import { FaHeart, FaComment } from "react-icons/fa6";
 // import { CiHeart } from "react-icons/ci";
 // import { MdOutlineInsertComment } from "react-icons/md";
 // import { IoClose } from "react-icons/io5";
@@ -139,20 +139,20 @@ export const SharedPostlist = ({
   };
 
   return (
-    <div>
-      <div className="">
-        <div className="h-full w-full bg-gray-50 flex items-center justify-center">
-          <div className="border max-w-screen-md bg-white mt-6 rounded-2xl p-4">
-            <div className="flex items-center justify-between ">
-              <div className="gap-3.5	flex items-center ">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6 transition-colors duration-200">
+      {/* Post Header */}
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center space-x-3">
                 <img
                   src={post?.sharedBy?.profileImage}
-                  alt=""
-                  className="object-cover bg-yellow-500 rounded-full w-10 h-10"
+            alt={post?.sharedBy?.name}
+            className="w-10 h-10 rounded-full border-2 border-purple-500"
                 />
-                <div className="flex flex-col">
-                  <b className="mb-1 capitalize">{post?.sharedBy?.name}</b>
-                  <p className="text-sm">shared this post</p>
+          <div>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200">{post?.sharedBy?.name}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              {post?.post?.date ? <TimeAgo date={post.post.date} /> : 'Just now'}
+            </p>
                 </div>
               </div>
               <div className="bg-gray-100	rounded-full h-3.5 flex	items-center justify-center gap-3">
@@ -168,250 +168,91 @@ export const SharedPostlist = ({
                 )}
               </div>
             </div>
-            <div className="mb-2 border-b">
-              <p className="mt-1 text-sm text-gray-700 p-3">
-                {post.description}
-              </p>
-            </div>
-            <div className="flex items-center	justify-between">
-              <div className="gap-3.5	flex items-center ">
-                <img
-                  src={post?.post?.userProfile}
-                  alt=""
-                  className="object-cover bg-yellow-500 rounded-full w-10 h-10"
-                />
-                <div className="flex flex-col">
-                  <b className="mb-2 capitalize">{post?.post?.username}</b>
-                  <time datetime="06-08-21" className="text-gray-400 text-xs">
-                    <TimeAgo date={post?.post?.date} />
-                  </time>
-                </div>
-              </div>
-              <div className="bg-gray-100	rounded-full h-3.5 flex	items-center justify-center gap-3"></div>
-            </div>
-            <div className="whitespace-pre-wrap mt-7 font-bold ">
-              {post?.post?.title}
-            </div>
-            <p className="mt-1 text-sm text-gray-700">
-              {post?.post?.description}
-            </p>
-            <div className="mt-5 flex gap-2	 justify-center border-b pb-4 flex-wrap	w-[600px] max-w-[700px]">
-              {post?.post?.images?.length === 3 ? (
-                <>
-                  <img
-                    src={post?.post?.images[0]}
-                    alt=""
-                    className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                  />
-                  <img
-                    src={post?.post?.images[1]}
-                    alt=""
-                    className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                  />
-                  <img
-                    src={post?.post?.images[2]}
-                    alt=""
-                    className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                  />
-                </>
-              ) : post?.post?.images?.length === 2 ? (
-                <>
-                  <img
-                    src={post?.post?.images[0]}
-                    alt=""
-                    className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                  />
-                  <img
-                    src={post?.post?.images[1]}
-                    alt=""
-                    className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                  />
-                </>
-              ) : post?.post?.images?.length === 1 ? (
-                <img
-                  src={post?.post?.images[0]}
-                  alt=""
-                  className="bg-red-500 rounded-2xl w-1/3 object-cover h-96 flex-auto"
-                />
-              ) : (
-                <>
-                  <video
-                    controls
-                    className="mt-3"
-                    style={{ maxWidth: "570px", height: "auto" }}
-                  >
-                    <source src={post?.post?.video} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </>
-              )}
-            </div>
-            {/* <div className=" h-16 border-b  flex items-center justify-around	">
-              <div className="flex items-center	gap-3	cursor-pointer">
-                {post?.post?.likedBy?.includes(user?.id) ? (
-                  <>
-                    <FaHeart
-                      size={24}
-                      color="red"
-                      // onClick={() => likeBtnClick(post)}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <CiHeart
-                      size={24}
-                      color="red"
-                      // onClick={() => likeBtnClick(post)}
-                    />
-                  </>
-                )}
-                <p> {post?.post?.likeCount} Like</p>
-              </div>
-              <div
-                className="flex items-center	gap-3 cursor-pointer"
-                onClick={() => setShowModal(true)}
-              >
-                <MdOutlineInsertComment size={24} color="blue" />
-                <p className="text-blue-900 ">
-                  {post?.post?.comments?.length} Comment
-                </p>
-              </div>
 
-              <div
-                className="flex items-center	gap-3 cursor-pointer"
-                onClick={() => setShareModal(true)}
-              >
-                <FaShareFromSquare size={22} />
-                <p> Share</p>
-              </div>
-            </div> */}
+      {/* Post Content */}
+      <div className="mb-4">
+        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">{post?.post?.title}</h2>
+        <p className="text-gray-600 dark:text-gray-300">{post?.post?.description}</p>
+            </div>
+
+      {/* Post Images */}
+      {post?.post?.images && post?.post?.images.length > 0 && (
+        <div className="mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {post?.post?.images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Post image ${index + 1}`}
+                className="w-full h-48 object-cover rounded-lg"
+              />
+            ))}
           </div>
         </div>
+      )}
+
+      {/* Post Actions */}
+      <div className="flex items-center space-x-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+        <button
+          onClick={() => {}}
+          className={`flex items-center space-x-2 ${
+            post?.post?.likedBy?.includes(user?.id)
+              ? "text-red-600 dark:text-red-400"
+              : "text-gray-600 dark:text-gray-400"
+          } hover:text-red-600 dark:hover:text-red-400 transition-colors`}
+        >
+          <FaHeart className="w-5 h-5" />
+          <span>{post?.post?.likeCount || 0}</span>
+        </button>
+        <button
+          onClick={() => {}}
+          className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+        >
+          <FaComment className="w-5 h-5" />
+          <span>{post?.post?.comments?.length || 0}</span>
+        </button>
       </div>
-      {/* {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none w-[550px] h-[600px] px-10 justify-between py-10">
-                <div className="text-center font-bold text-xl flex justify-between ">
-                  <h1 className="text-blue-800">Comments</h1>
-                  <IoClose
-                    color="red"
-                    size={28}
-                    className="cursor-pointer"
-                    onClick={() => setShowModal(false)}
-                  />
+
+      {/* Comments Section */}
+      {/* {showComments && (
+        <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4">
+          <div className="mb-4">
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Write a comment..."
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 focus:border-transparent dark:bg-gray-700 dark:text-gray-200"
+              rows="2"
+            />
+            <button
+              onClick={handleAddComment}
+              className="mt-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Comment
+            </button>
                 </div>
-                <div className=" h-[400px] overflow-y-scroll ">
-                  <div className="flex flex-col gap-8 justify-center">
-                    {post?.post?.comments?.length > 0 ? (
-                      post?.post?.comments?.map((comment) => (
-                        <div className="flex items-center  justify-between">
-                          <div className="flex gap-5">
-                            <div className="flex justify-center items-center">
+          <div className="space-y-4">
+            {post?.post?.comments?.map((comment, index) => (
+              <div key={index} className="flex space-x-3">
                               <img
                                 src={comment?.commentByProfile}
-                                alt=""
-                                className="object-cover bg-yellow-500 rounded-full w-14 h-14"
-                              />
-                            </div>
-                            <div className="flex flex-col">
-                              <b className="capitalize">{comment?.commentBy}</b>
-                              <time
-                                datetime="06-08-21"
-                                className="text-gray-400 text-xs"
-                              >
+                  alt={comment?.commentBy}
+                  className="w-8 h-8 rounded-full"
+                />
+                <div className="flex-1 bg-gray-50 dark:bg-gray-700 rounded-lg p-3">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold text-gray-800 dark:text-gray-200">{comment?.commentBy}</h4>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
                                 <TimeAgo date={comment?.createdAt} />
-                              </time>
-                              <p className="mt-1 text-base">
-                                {comment?.content}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex flex-col gap-5 px-5">
-                            {user?.id === comment?.commentById && (
-                              <>
-                                <AiFillDelete
-                                  onClick={() => deleteComment(comment)}
-                                  size={20}
-                                  color="red"
-                                  className="cursor-pointer"
-                                />
-                                <AiFillEdit
-                                  onClick={() => {
-                                    handleEditComment(comment, post?.post?.id);
-                                    setCommentId(comment.id);
-                                  }}
-                                  size={20}
-                                  color="blue"
-                                  className="cursor-pointer"
-                                />
-                              </>
-                            )}
-                          </div>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-center text-2xl text-gray-400">
-                        No comments yet
-                      </div>
-                    )}
+                    </span>
                   </div>
+                  <p className="text-gray-600 dark:text-gray-300 mt-1">{comment?.content}</p>
                 </div>
-                <form onSubmit={commentAdd} className="flex">
-                  <input
-                    type="text"
-                    className="px-2 w-full h-10 border"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder="Add a comment"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-blue-500 text-white w-20 h-10"
-                  >
-                    {<>{editComment ? "Update" : "Add"} </>}
-                  </button>
-                </form>
               </div>
-            </div>
+            ))}
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
-
-      {shareModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none w-[550px] h-[300px] px-10 justify-between py-10">
-                <div className="text-center font-bold text-xl flex justify-between ">
-                  <h1 className="text-blue-800">Share</h1>
-                  <IoClose
-                    color="red"
-                    size={28}
-                    className="cursor-pointer"
-                    onClick={() => setShareModal(false)}
-                  />
                 </div>
-                <form className="flex flex-col" onSubmit={handleShare}>
-                  <textarea
-                    className="border h-32 p-2"
-                    placeholder="Write something"
-                    onChange={(e) => setShareDescription(e.target.value)}
-                  ></textarea>
-                  <button
-                    type="submit"
-                    className="bg-blue-500 text-white mt-4 h-8"
-                  >
-                    Share
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </>
-      ) : null} */}
+      )} */}
     </div>
   );
 };

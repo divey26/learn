@@ -16,17 +16,17 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navbar user={user} />
       <button
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-colors duration-200 md:hidden"
+        className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-gray-700 transition-colors duration-200 md:hidden"
       >
-        {isSidebarOpen ? <FaTimes className="w-5 h-5" /> : <FaBars className="w-5 h-5" />}
+        {isSidebarOpen ? <FaTimes className="w-5 h-5 dark:text-white" /> : <FaBars className="w-5 h-5 dark:text-white" />}
       </button>
       <MainSideBar user={user} isOpen={isSidebarOpen} />
       <main className={`transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'} pt-16`}>
-        <div className="p-6">
+        <div className="max-w-4xl mx-auto p-6 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900 rounded-lg shadow-md">
           {React.Children.map(children, child =>
             React.isValidElement(child)
               ? React.cloneElement(child, { user })

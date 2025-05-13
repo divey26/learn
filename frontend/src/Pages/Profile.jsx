@@ -82,8 +82,8 @@ const Profile = () => {
 
   return (
     <Layout>
-      <div className="w-full flex items-center justify-center flex-col bg-gray-100">
-        <div className=" w-[800px] bg-white rounded-lg">
+      <div className="w-full flex items-center justify-center flex-col bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-800 dark:text-gray-200">
+        <div className="w-[800px] bg-white dark:bg-gray-800 rounded-lg shadow-md">
           {/* <section className=" flex items-center top-0 bg-opacity-95 ">
             <p className="py-5 text-xl font-bold  ml-1 ">{user?.name}</p>
           </section> */}
@@ -99,7 +99,7 @@ const Profile = () => {
           <section className="pl-6">
             <div className="flex justify-between items-start mt-5 h-20 ">
               <img
-                className="-mt-28 w-40 h-40  border-4 border-white rounded-full "
+                className="-mt-28 w-40 h-40 border-4 border-white dark:border-gray-900 rounded-full "
                 alt="w"
                 src={user?.profileImage}
               />
@@ -127,11 +127,11 @@ const Profile = () => {
               <div className="flex items-center space-x-5">
                 <div className="flex items-center space-x-1 font-semibold">
                   <span>{user?.followingCount}</span>
-                  <span className="text-gray-500">Following</span>
+                  <span className="text-gray-500 dark:text-gray-400">Following</span>
                 </div>
                 <div className="flex items-center space-x-1 font-semibold">
                   <span>{user?.followersCount}</span>
-                  <span className="text-gray-500">Followers</span>
+                  <span className="text-gray-500 dark:text-gray-400">Followers</span>
                 </div>
               </div>
             </div>
@@ -143,8 +143,6 @@ const Profile = () => {
             <span className="text-gray-500"> 's Posts</span>
           </p> */}
           {posts?.map((post, index) => {
-
-            
             return (
               <PostsList
                 post={post}
